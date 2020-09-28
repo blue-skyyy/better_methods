@@ -6,7 +6,7 @@
  *     允许缩放的最大宽度
  * @param maxHeight
  *     允许缩放的最大高度
- * @usage
+ * @return {Object} width height
  *
  */
 function scaleWH(imageW, imageH, maxWidth, maxHeight) {
