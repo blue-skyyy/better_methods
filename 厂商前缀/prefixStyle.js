@@ -1,11 +1,10 @@
-let elementStyle = document.createElement("div").style;
-
 /**
  * @description: prefix style
  * @style  stylename
  */
 
-function vendor(prop) {
+const vendor = (prop) => {
+  let element = document.createElement("div");
   let ucProp = prop.charAt(0).toUpperCase() + prop.substr(1);
   let transformNames = {
     webkit: `webkit${ucProp}`,
@@ -15,14 +14,14 @@ function vendor(prop) {
     standard: prop
   };
   for (let key in transformNames) {
-    if (elementStyle[transformNames[key]] !== undefined) {
+    if (element.style[transformNames[key]] !== undefined) {
       return key;
     }
   }
   return false;
-}
+};
 
-function prefixStyle(style) {
+export const prefixStyle = (style) => {
   const ret = vendor(style);
   if (ret === false) {
     return false;
@@ -32,4 +31,4 @@ function prefixStyle(style) {
   }
 
   return ret + style.charAt(0).toUpperCase() + style.substr(1);
-}
+};
